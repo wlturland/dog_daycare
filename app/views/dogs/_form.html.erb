@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :owner_id %><br>
-    <%= f.collection_select :owner_id.name %>
+    <%= f.collection_select :owner_id, Owner.all, :id, :last_first, {prompt: "Select an owner"} %>
   </div>
   <div class="field">
     <%= f.label :breed_id %><br>
-    <%= f.collection_select :breed_id.name %>
+    <%= f.collection_select :breed_id, Breed.all, :id, :breed, {prompt: "Select a breed"} %>
   </div>
   <div class="field">
     <%= f.label :dob %><br>
