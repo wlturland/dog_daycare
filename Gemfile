@@ -38,6 +38,9 @@ gem 'thin'
 # Easily add Bootstrap themes and elements
 gem 'starter_generators'
 
+# Loads Paperclip
+gem 'paperclip', '~> 4.2'
+
 group :development do
   # Quiet those assets down!
   gem 'quiet_assets'
