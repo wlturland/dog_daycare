@@ -13,7 +13,7 @@ namespace :db do
 		[Owner, Dog].each(&:destroy_all)
 
 
-		#begin oopulation
+		#begin population
 		# add Owners
 		Owner.populate 30 do |owner|
 			owner.first_name = Faker::Name.first_name
@@ -21,9 +21,10 @@ namespace :db do
 			owner.phone = Faker::PhoneNumber.phone_number
 		# add Dogs
 		Dog.populate 1..5 do |dog|
-			dog.owner_id = :owner_id 
+			breed_id = rand(1..14)
+			dog.owner_id = owner.id 
 			dog.name = Faker::App.name
-			dog.breed = :breed_id
+			dog.breed_id = breed_id
 			dog.dob = rand(0..20)
 		end #dog
 		end #population
