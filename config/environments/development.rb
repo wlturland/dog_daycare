@@ -1,8 +1,8 @@
-Rails.application.configure do
+Rails.application.configure do 
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Giving Paperclip access to ImageMagick
-  Paperclip.options[:command_path] = "/c/Program Files (x86)/ImageMagick-6.9.1-Q16"
+  Paperclip.options[:command_path] = "C:/Program Files (x86)/ImageMagick-6.9.1-Q16/;C:/Program Files (x86)/GnuWin32/"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
