@@ -7,7 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Breed</th>
-      <th>Dob</th>
+      <th>Date of Birth</th>
       <th>Vet</th>
       <th>Vet phone</th>
       <th>In daycare</th>
@@ -24,9 +24,9 @@
         <td><%= dog.vet %></td>
         <td><%= dog.vet_phone %></td>
         <td><%= dog.in_daycare %></td>
-        <td><%= link_to 'Show', dog %></td>
-        <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
-        <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to content_tag(:i, nil, class: "fa fa-eye"), dog %></td>
+        <td><%= link_to content_tag(:i, nil, class: "fa fa-pencil"), edit_dog_path(dog) %></td>
+        <td><%= link_to content_tag(:i, nil, class: "fa fa-trash-o"), dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,3 +35,5 @@
 <br>
 
 <%= link_to 'New Dog', new_dog_path %>
+
+

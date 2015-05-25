@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field ">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -23,10 +23,10 @@
     <%= f.label :breed_id %><br>
     <%= f.collection_select :breed_id, Breed.all, :id, :breed, {prompt: "Select a breed"} %>
   </div>
-  <div class="field">
-    <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
-  </div>
+  <div class="field form-group">
+   <%= f.label :dob %><br>
+   <%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => 2015, :end_year => 1995, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }}, class: "form-control date-select" %>
+ </div>
   <div class="field">
     <%= f.label :vet %><br>
     <%= f.text_field :vet %>
