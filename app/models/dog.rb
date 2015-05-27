@@ -22,10 +22,17 @@ class Dog < ActiveRecord::Base
   belongs_to :owner
   belongs_to :breed
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
- 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+validates :name, :owner_id, :breed_id, presence: true
 
- validates :name, presence: true, length: {minimum: 3}
- validates :vet, presence: true, length: {minimum: 3}
- validates :vet_phone, presence: true, length: {minimum: 10}
+
+has_attached_file :avatar, :styles => {
+      :medium => "300x300#",
+      :thumb => "100x100#"
+    },
+    :default_url => "missing_:style.jpg"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  
+validates_attachment_size :avatar, :less_than => 3.megabytes,
+    :unless => Proc.new {|m| m[:avatar_file_name].blank?}
+
 end

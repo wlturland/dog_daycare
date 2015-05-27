@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get 'pages/about'
 
   resources :dogs
+  # Dog routes the long way:
+  # get '/dogs' => 'dogs#index'
+  # get '/dogs/:id'=> 'dogs#show'
+  # get '/dogs/new' => 'dogs#new'
+
   resources :owners
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

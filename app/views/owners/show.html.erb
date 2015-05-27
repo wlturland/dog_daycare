@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @owner.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @owner.last_name %>
-</p>
+<h1>
+  <%= "#{@owner.first_name} #{@owner.last_name}" %>
+</h1>
 
 <p>
   <strong>Phone:</strong>
@@ -16,13 +11,37 @@
 </p>
 
 <p>
-  <strong>Emerg name:</strong>
+  <strong>Emergency Contact:</strong>
   <%= @owner.emerg_name %>
 </p>
 
 <p>
-  <strong>Emerg phone:</strong>
+  <strong>Emergency Contact Phone:</strong>
   <%= @owner.emerg_phone %>
+</p>
+
+<p>
+  <strong>Dogs:</strong>
+  <div class="row">
+    <% @owner.dogs.each do |dog| %>
+      <div class="col-sm-4">
+        <div class="panel panel-default <%= 'panel-success' if dog.in_daycare %>">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= dog.name %> <%= dog.owner.last_name %></h3>
+          </div>
+          <div class="panel-body">
+            <!-- image_tag dog.avatar.url(:medium), class: "img-responsive" -->
+          </div>
+          <div class="panel-footer">
+            <!-- In daycare? <%# dog.in_daycare %> -->
+            <%= link_to content_tag(:i, nil, class: "fa fa-eye"), dog %>
+            <%= link_to content_tag(:i, nil, class: "fa fa-pencil"), edit_dog_path(dog) %>
+            <%= link_to content_tag(:i, nil, class: "fa fa-trash-o"), dog, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div> <!-- panel -->
+      </div> <!-- col-md-3 -->
+    <% end %>
+  </div>
 </p>
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |

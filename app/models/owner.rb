@@ -19,10 +19,6 @@ class Owner < ActiveRecord::Base
 		"#{last_name}, #{first_name}" 
 	end
 
-	# validates :first_name, presence: true, length {minimum: 3}
-	# validates :last_name, presence: true, length {minimum: 3}   
-	# validates :phone, presence: true, length {minimum: 10}       
-	# validates :emerg_name, presence: true, length {minimum: 3}  
-	# validates :emerg_phone, presence: true, length {minimum: 10} 
+	validates :first_name, :last_name, :phone, presence: true
 
 end
