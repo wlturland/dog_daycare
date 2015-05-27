@@ -22,9 +22,10 @@
         <td><%= owner.phone %></td>
         <td><%= owner.emerg_name %></td>
         <td><%= owner.emerg_phone %></td>
-        <td><%= link_to 'Show', owner %></td>
-        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to content_tag(:i, nil, class: "fa fa-eye"), owner %></td>
+        <td><%= link_to content_tag(:i, nil, class: "fa fa-pencil"), edit_owner_path(owner) %></td>
+        <td><%= link_to content_tag(:i, nil, class: "fa fa-trash-o"), owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Owner', new_owner_path %>
+<%= link_to 'New Owner', new_owner_path, class: "btn btn-info" %>
