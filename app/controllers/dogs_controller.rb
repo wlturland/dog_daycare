@@ -51,7 +51,7 @@ class DogsController < ApplicationController
   def update
     respond_to do |format|
       if @dog.update(dog_params)
-        format.html { redirect_to @dogs_path, notice: 'Dog was successfully updated.' }
+        format.html { redirect_to @dog, notice: 'Dog was successfully updated.' }
         format.json { render :show, status: :ok, location: @dog }
       else
         format.html { render :edit }
@@ -78,6 +78,6 @@ class DogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dog_params
-      params.require(:dog).permit(:name, :owner_id, :breed_id, :dob, :vet, :vet_phone, :in_daycare)
+      params.require(:dog).permit(:name, :owner_id, :breed_id, :dob, :vet, :vet_phone, :in_daycare, :avatar)
     end
 end
