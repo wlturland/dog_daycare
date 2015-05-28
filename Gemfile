@@ -41,6 +41,9 @@ gem 'starter_generators'
 # Loads Paperclip
 gem 'paperclip', '~> 4.2'
 
+# Adds Devise
+gem 'devise'
+
 group :development do
   # Quiet those assets down!
   gem 'quiet_assets'
