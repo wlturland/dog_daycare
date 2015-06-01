@@ -10,12 +10,12 @@ namespace :db do
 		# Owner.destroy_all
 		# Dog.destroy_all
 			# best practice
-		[Owner, Dog].each(&:destroy_all)
+		[Owner, Dog, Product].each(&:destroy_all)
 
 
 		#begin population
 		# add Owners
-		Owner.populate 30 do |owner|
+		Owner.populate 20 do |owner|
 			owner.first_name = Faker::Name.first_name
 			owner.last_name = Faker::Name.last_name
 			owner.phone = Faker::PhoneNumber.phone_number
@@ -32,6 +32,16 @@ namespace :db do
 			dog.vet_phone =Faker::PhoneNumber.phone_number
 			dog.in_daycare = [true, false].sample
 		end #dog
+
+		# product population
+		Product.populate 20 do |product|
+			product.name = Faker::Commerce.product_name
+			product.price = Faker::Commerce.price
+			product.quantity = rand(2..50)
+			product.description = Faker::Lorem.sentences(3)
+			product.brand = Faker::Company.name
+			product.category_id = rand(1..5)
+		end #product
 		end #population
 	end #task
 end
