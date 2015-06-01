@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <p>
   <strong>Name:</strong>
@@ -25,15 +25,17 @@
   <%= @product.brand %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Rating:</strong>
   <%= @product.rating %>
-</p>
+</p> -->
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
+  <%= @product.category.name %>
 </p>
+
+<%= image_tag @product.image.url(:medium) %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

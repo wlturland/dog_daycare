@@ -29,7 +29,7 @@ has_attached_file :avatar, :styles => {
       :medium => "300x300#",
       :thumb => "100x100#"
     },
-    :default_url => "missing_:style.jpg"
+    :default_url => "missing_dog_:style.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   
 validates_attachment_size :avatar, :less_than => 3.megabytes,
