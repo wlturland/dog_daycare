@@ -1,20 +1,22 @@
 # == Schema Information
 #
-# Table name: owners
+# Table name: products
 #
 #  id          :integer          not null, primary key
-#  first_name  :string
-#  last_name   :string
-#  phone       :string
-#  emerg_name  :string
-#  emerg_phone :string
+#  name        :string
+#  price       :decimal(, )
+#  quantity    :integer
+#  description :text
+#  brand       :string
+#  rating      :integer
+#  category_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class OwnerTest < ActiveSupport::TestCase
+class ProductTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
