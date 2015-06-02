@@ -11,11 +11,13 @@
 	</thead>
 	<tbody>
 		<% @cart.line_items.each do |item| %>
+		<tr>
 			<td><%= item.product.name %></td>
 			<td><%= item.quantity %></td>
 			<td><%= number_to_currency item.product.price %></td>
 			<td><%= number_to_currency item.total_price %></td>
 		<% end %>
+		</tr>
 	</tbody>
 </table>
 
