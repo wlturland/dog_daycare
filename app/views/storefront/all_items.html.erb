@@ -1,7 +1,11 @@
 <h1>Welcome to Dog Daycare Store</h1>
 <p>Where you can spoil your pet!</p>
-
-<h3>All Items</h3>
+<!-- TODO: Add logic to handle when there is no inventory in the category (do in controller) -->
+<% if params[:cat_id] %>
+ <h3>All <%= @category.name.capitalize %></h3>
+<% else %>
+ <h3>All Items</h3>
+<% end %>
 
 <div class="row">
 	<% @products.each do |product| %>
@@ -20,6 +24,7 @@
 						<span class="glyphicon glypicon-star yellow"></span>
 					<%# end %>
 					</p> -->
+					<%= button_to 'Add to Cart', line_items_path(product_id: product), class: "btn btn-success btn-sm" %>
 				</div>
 			</div>
 		</div>
