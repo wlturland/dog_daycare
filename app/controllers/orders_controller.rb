@@ -1,41 +1,56 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+ include CurrentCart
+ before_action :set_cart, only: [:new, :create]
+ before_action :set_order, only: [:show, :edit, :update, :destroy]
+ # before_action :authenticate_user!
 
-  # GET /orders
-  # GET /orders.json
-  def index
-    @orders = Order.all
-  end
+ # GET /orders
+ # GET /orders.json
+ def index
+   @orders = Order.all
+ end
 
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
-  end
+ # GET /orders/1
+ # GET /orders/1.json
+ def show
+ end
 
-  # GET /orders/new
-  def new
-    @order = Order.new
-  end
+ # GET /orders/new
+ def new
+   if @cart.line_items.empty?
+     redirect_to storefront_all_items_url, notice: "Your cart is empty."
+     return
+   end
 
-  # GET /orders/1/edit
-  def edit
-  end
+   @order = Order.new
+   # @order.user_id = current_user.id
+ end
 
-  # POST /orders
-  # POST /orders.json
-  def create
-    @order = Order.new(order_params)
+ # GET /orders/1/edit
+ def edit
+ end
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+ # POST /orders
+ # POST /orders.json
+ def create
+   @order = Order.new(order_params)
+   @order.user_id = current_user.id
+   @order.add_line_items_from_cart(@cart)
+
+   respond_to do |format|
+     if @order.save
+       Cart.destroy(session[:cart_id])
+       session[:cart_id] = nil
+
+       format.html { redirect_to storefront_all_items_url,
+         notice: 'Thank you for your order!' }
+       format.json { render :show, status: :created, location: @order }
+     else
+       format.html { render :new }
+       format.json { render json: @order.errors, status: :unprocessable_entity }
+     end
+   end
+ end
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
